@@ -1,0 +1,1 @@
+"""Boardfarm OpenWRT plugins package."""
