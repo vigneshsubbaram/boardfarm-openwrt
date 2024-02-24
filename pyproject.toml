@@ -28,7 +28,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 
 dependencies = [
-    "boardfarm3"
+    "boardfarm3@git+https://github.com/lgirdk/boardfarm.git@boardfarm3"
 ]
 
 [project.optional-dependencies]
