@@ -58,7 +58,7 @@ class OpenWRTSW(OpenWRTSWTemplate):
         """LAN Gateway IPv6 address.
 
         :return: LAN Gateway IPv6 address.
-        :rtype: IPv4Address
+        :rtype: IPv6Address
         """
         return IPv6Address(self.get_interface_ipv6addr(self.lan_iface))
 
@@ -71,7 +71,7 @@ class OpenWRTSW(OpenWRTSWTemplate):
         :rtype: IPv4Address
         """
         output = self._get_console("networking").execute_command(
-            f"ifconfig {interface}"
+            f"ifconfig {interface}",
         )
         netmask = output.split("Mask:")[-1].split()[0]
         return IPv4Address(netmask)
@@ -89,8 +89,9 @@ class OpenWRTSW(OpenWRTSWTemplate):
     def _get_console(self, usage: str) -> BoardfarmPexpect:
         """Return console instance for the given usage.
 
-        :param usage: usage of the console(dmcli/networking/wifi)
+        :param usage: usage of the console(default_shell/networking/wifi)
         :type usage: str
+        :raises ValueError: if unknown console
         :return: console instance for the given usage
         :rtype: BoardfarmPexpect
         """
@@ -131,7 +132,7 @@ class OpenWRTSW(OpenWRTSWTemplate):
         prefix = "inet6" if is_ipv6 else "inet"
         ip_regex = prefix + r"\s(?:addr:)?\s*([^\s/]+)"
         output = self._get_console("networking").execute_command(
-            f"ifconfig {interface_name}"
+            f"ifconfig {interface_name}",
         )
         return re.findall(ip_regex, output)
 
@@ -139,7 +140,10 @@ class OpenWRTSW(OpenWRTSWTemplate):
         """Return given interface IPv4 address.
 
         :param interface: interface name
+        :type interface: str
+        :raises ValueError: If failed to get the IPv4 address of the interface
         :return: IPv4 address
+        :rtype: str
         """
         if ips := self._get_nw_interface_ip_address(interface, is_ipv6=False):
             return ips[0]
@@ -150,8 +154,12 @@ class OpenWRTSW(OpenWRTSWTemplate):
         """Return IPv6 address of the given network interface.
 
         :param interface: network interface name
+        :type interface: str
         :param address_type: ipv6 address type
-        :returns: IPv6 address of the given interface
+        :type address_type: str
+        :raises ValueError: If failed to get the IPv6 address of the interface
+        :return: IPv6 address of the given interface
+        :rtype: str
         """
         address_type = address_type.replace("-", "_")
         ip_addresses = self._get_nw_interface_ip_address(interface, is_ipv6=True)

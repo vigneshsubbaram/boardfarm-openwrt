@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from boardfarm3.templates.wan import WAN
 
 
-def ping(
+def ping(  # noqa: PLR0913
     src: LAN | WAN,
     dst: LAN | WAN,
     ping_count: int = 4,

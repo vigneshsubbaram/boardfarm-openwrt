@@ -6,7 +6,7 @@ from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from ipaddress import IPv4Address, IPv4Network, IPv6Address
+    from ipaddress import IPv4Address, IPv4Network
 
     from boardfarm3_openwrt.templates.openwrt.openwrt_hw import OpenWRTHW
     from boardfarm3_openwrt.templates.openwrt.openwrt_sw import OpenWRTSW

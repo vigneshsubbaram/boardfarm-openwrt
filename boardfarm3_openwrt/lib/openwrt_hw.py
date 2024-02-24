@@ -3,8 +3,6 @@
 from argparse import Namespace
 from typing import Any
 
-import pexpect
-from boardfarm3.exceptions import DeviceConnectionError
 from boardfarm3.lib.boardfarm_pexpect import BoardfarmPexpect
 from boardfarm3.lib.connection_factory import connection_factory
 
@@ -42,10 +40,6 @@ class OpenWRTHW(OpenWRTHWTemplate):
 
         :param device_name: device name
         :type device_name: str
-        :param console_name: name of the console
-        :type console_name: str
-        :param shell_prompt: shell prompt patterns
-        :type shell_prompt: List[str]
         :return: serial console instance
         :rtype: BoardfarmPexpect
         """
@@ -121,7 +115,11 @@ class OpenWRTHW(OpenWRTHWTemplate):
 
     @property
     def mac_address(self) -> str:
-        """Get CPE MAC address."""
+        """Get CPE MAC address.
+
+        :return: CPE MAC address.
+        :rtype: str
+        """
         return self._config.get("mac")
 
     def get_interactive_consoles(self) -> dict[str, BoardfarmPexpect]:

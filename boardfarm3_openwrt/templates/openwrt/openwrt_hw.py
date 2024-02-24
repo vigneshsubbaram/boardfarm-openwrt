@@ -14,7 +14,11 @@ class OpenWRTHW(ABC):
 
     @property
     def config(self) -> dict[str, Any]:
-        """Device config."""
+        """Device config.
+
+        :return: Device config.
+        :rtype: dict[str, Any]
+        """
         return self._config
 
     @property

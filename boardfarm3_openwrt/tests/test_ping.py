@@ -19,10 +19,16 @@ from boardfarm3_openwrt.use_cases.ping import ping
                 "lan_clients": [{}, {}],
             },
         },
-    }
+    },
 )
 def test_ping(bf_logger: TestLogger, device_manager: DeviceManager) -> None:
-    """Check if ping works between lan clients."""
+    """Check if ping works between lan clients.
+
+    :param bf_logger: bf_logger instance
+    :type bf_logger: TestLogger
+    :param device_manager: device manager instance
+    :type device_manager: DeviceManager
+    """
     lan1, lan2, *_ = device_manager.get_devices_by_type(
         LAN,  # type: ignore[type-abstract]
     ).values()
