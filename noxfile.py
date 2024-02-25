@@ -11,7 +11,7 @@ nox.options.error_on_external_run = True
 
 @nox.session(python=_PYTHON_VERSIONS)
 def lint(session: nox.Session) -> None:
-    """Lint boardfarm.
+    """Lint boardfarm-openwrt.
 
     # noqa: DAR101
     """
@@ -24,8 +24,9 @@ def lint(session: nox.Session) -> None:
 
 @nox.session(python=_PYTHON_VERSIONS)
 def pylint(session: nox.Session) -> None:
-    """Lint boardfarm using pylint without dev dependencies.
+    """Lint boardfarm-openwrt using pylint without dev dependencies.
 
     # noqa: DAR101
     """
+    session.install("--upgrade", ".", "pylint")
     session.run("pylint", "boardfarm3_openwrt")
