@@ -11,8 +11,6 @@ if TYPE_CHECKING:
     from boardfarm3.lib.boardfarm_pexpect import BoardfarmPexpect
     from boardfarm3.lib.networking import DNS, IptablesFirewall
 
-# pylint: disable=too-many-public-methods,duplicate-code
-
 
 class OpenWRTSW(ABC):
     """OpenWRT Software Template."""

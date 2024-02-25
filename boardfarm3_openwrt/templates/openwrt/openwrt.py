@@ -12,22 +12,19 @@ if TYPE_CHECKING:
     from boardfarm3_openwrt.templates.openwrt.openwrt_sw import OpenWRTSW
 
 
-# pylint: disable=too-many-public-methods,too-many-instance-attributes
-
-
 class OpenWRT(ABC):
     """OpenWRT device Template."""
 
     @property
     @abstractmethod
     def hw(self) -> OpenWRTHW:  # pylint: disable=invalid-name
-        """OpenWRT hardware."""
+        """Openwrt hardware."""
         raise NotImplementedError
 
     @property
     @abstractmethod
     def sw(self) -> OpenWRTSW:  # pylint: disable=invalid-name
-        """OpenWRT Software."""
+        """Openwrt Software."""
         raise NotImplementedError
 
     @property

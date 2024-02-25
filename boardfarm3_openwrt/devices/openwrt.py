@@ -52,7 +52,7 @@ class OpenWRT(BoardfarmDevice, OpenWRTTemplate):
 
     @property
     def hw(self) -> OpenWRTHW:  # pylint: disable=invalid-name
-        """OpenWRT hardware.
+        """Openwrt hardware.
 
         :return: OpenWRT hardware.
         :rtype: OpenWRTHW
@@ -61,7 +61,7 @@ class OpenWRT(BoardfarmDevice, OpenWRTTemplate):
 
     @property
     def sw(self) -> OpenWRTSW:  # pylint: disable=invalid-name
-        """OpenWRT Software.
+        """Openwrt Software.
 
         :return: OpenWRT Software.
         :rtype: OpenWRTSW
