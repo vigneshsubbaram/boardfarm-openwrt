@@ -13,6 +13,7 @@ class OpenWRTHW(ABC):
     """OpenWRT hardware template."""
 
     @property
+    @abstractmethod
     def config(self) -> dict[str, Any]:
         """Device config."""
         raise NotImplementedError
