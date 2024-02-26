@@ -24,6 +24,7 @@ class OpenWRT(BoardfarmDevice, OpenWRTTemplate):
         :param config: device configuration
         :param cmdline_args: command line arguments
         """
+        super().__init__(config, cmdline_args)
         self._hw = OpenWRTHW(config, cmdline_args)
         self._sw: OpenWRTSW = None
         self._config = config

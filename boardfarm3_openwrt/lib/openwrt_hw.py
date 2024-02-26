@@ -24,6 +24,7 @@ class OpenWRTHW(OpenWRTHWTemplate):
         """
         self._config = config
         self._cmdline_args = cmdline_args
+        self._console = None
         self._shell_prompt: list[str] = [r"root@OpenWrt:~#"]
 
     @property
