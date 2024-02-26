@@ -1,9 +1,14 @@
 """OpenWRT hardware implementation."""
 
-from argparse import Namespace
-from typing import Any
+from __future__ import annotations
 
-from boardfarm3.lib.boardfarm_pexpect import BoardfarmPexpect
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from argparse import Namespace
+
+    from boardfarm3.lib.boardfarm_pexpect import BoardfarmPexpect
+
 from boardfarm3.lib.connection_factory import connection_factory
 
 from boardfarm3_openwrt.templates.openwrt.openwrt_hw import (
@@ -24,7 +29,7 @@ class OpenWRTHW(OpenWRTHWTemplate):
         """
         self._config = config
         self._cmdline_args = cmdline_args
-        self._console = None
+        self._console: BoardfarmPexpect | None = None
         self._shell_prompt: list[str] = [r"root@OpenWrt:~#"]
 
     @property
