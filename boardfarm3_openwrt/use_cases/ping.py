@@ -36,7 +36,7 @@ def ping(  # noqa: PLR0913
     :rtype: bool | dict[str, Any]
     """
     return src.ping(
-        dst.get_eth_interface_ipv4_address(),
+        dst.get_interface_ipv4addr(dst.iface_dut),
         ping_count,
         ping_interface,
         timeout=timeout,
