@@ -4,16 +4,16 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any
 
-if TYPE_CHECKING:
-    from argparse import Namespace
-
-    from boardfarm3.lib.boardfarm_pexpect import BoardfarmPexpect
-
 from boardfarm3.lib.connection_factory import connection_factory
 
 from boardfarm3_openwrt.templates.openwrt.openwrt_hw import (
     OpenWRTHW as OpenWRTHWTemplate,
 )
+
+if TYPE_CHECKING:
+    from argparse import Namespace
+
+    from boardfarm3.lib.boardfarm_pexpect import BoardfarmPexpect
 
 
 class OpenWRTHW(OpenWRTHWTemplate):
