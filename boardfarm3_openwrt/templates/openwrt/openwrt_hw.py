@@ -14,12 +14,8 @@ class OpenWRTHW(ABC):
 
     @property
     def config(self) -> dict[str, Any]:
-        """Device config.
-
-        :return: Device config.
-        :rtype: dict[str, Any]
-        """
-        return self._config
+        """Device config."""
+        raise NotImplementedError
 
     @property
     @abstractmethod
